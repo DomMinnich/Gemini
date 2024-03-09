@@ -1,0 +1,49 @@
+body {
+    background-color: #ffccff;
+    color: #333;
+    font-family: 'Comic Sans MS', cursive;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label, input, button {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 18px;
+    margin: 10px;
+    padding: 8px;
+}
+
+button {
+    background-color: #ff6699;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #ff3366;
+}
+
+#responseContainer {
+    display: none;
+    margin-top: 20px;
+    animation: bounceIn 1s ease-in-out;
+}
+
+@keyframes bounceIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

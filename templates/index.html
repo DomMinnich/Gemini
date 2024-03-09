@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Template</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+</head>
+<body>
+    <!-- Question form -->
+    <form id="questionForm">
+        <label for="question">Enter your question:</label>
+        <input type="text" id="question" name="question" required>
+        <button type="button" onclick="generate()">Generate</button>
+    </form>
+
+    <!-- Loading indicator -->
+    <div id="loading" style="display: none;">
+        <img src="{{ url_for('static', filename='duck.gif') }}" alt="Loading...">
+    </div>
+
+    <!-- Response container -->
+    <div id="responseContainer">
+        <h1>Generated Response:</h1>
+        <p id="response"></p>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Function to generate response
+        function generate() {
+            var question = $('#question').val();
+            $('#loading').show();
+            $.ajax({
+                type: 'POST',
+                url: '/generate',
+                data: { 'question': question },
+                success: function (data) {
+                    $('#loading').hide();
+                    $('#response').text(data.response);
+                    $('#responseContainer').show();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
